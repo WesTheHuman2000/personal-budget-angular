@@ -17,14 +17,15 @@
 
     <div class="menu">
         <ul>
-            <li><a href="/">Homepage</a></li>
-            <li><a href="/about.html">About</a></li>
-            <li><a href="/login.html">Login</a></li>
-            <li><a href="https://google.com">Google</a></li>
+            <!--A11y Change: Aria Label-->
+            <li><a aria-label ='button-Home' href="./">Homepage</a></li>
+            <li><a aria-label ='button-About' href="./about.html">About</a></li>
+            <li><a aria-label ='button-Login' href="./login.html">Login</a></li>
+            <li><a aria-label ='button-Google' href="https://google.com">Google</a></li>
         </ul>
     </div>
-
-    <div class="hero">
+<!--A11y Changes-->
+    <div class="hero" aria-hidden="true">
         <h1>Personal Budget</h1>
         <h2>A personal-budget management app</h2>
     </div>
@@ -33,7 +34,8 @@
 
         <div class="page-area">
 <!--Semantic HTML Change from div to section-->
-            <section class="text-box">
+            <!--A11y Changes-->
+            <section aria-describedby="budgeting-desc" class="text-box">
                 <h1>Stay on track</h1>
                 <p>
                     Do you know where you are spending your money? If you really stop to track it down,
@@ -42,14 +44,14 @@
                 </p>
             </section>
     
-            <section class="text-box">
+            <section class="text-box" aria-describedby="budgeting-desc">
                 <h1>Alerts</h1>
                 <p>
                     What if your clothing budget ended? You will get an alert. The goal is to never go over the budget.
                 </p>
             </section>
     
-            <section class="text-box">
+            <section class="text-box" aria-describedby="budgeting-desc">
                 <h1>Results</h1>
                 <p>
                     People who stick to a financial plan, budgeting every expense, get out of debt faster!
@@ -58,14 +60,14 @@
                 </p>
             </section>
     
-            <section class="text-box">
+            <section class="text-box" aria-describedby="budgeting-desc">
                 <h1>Free</h1>
                 <p>
                     This app is free!!! And you are the only one holding your data!
                 </p>
             </section>
     
-            <section class="text-box">
+            <section class="text-box" aria-describedby="budgeting-desc">
                 <h1>Stay on track</h1>
                 <p>
                     Do you know where you are spending your money? If you really stop to track it down,
@@ -74,14 +76,14 @@
                 </p>
             </section>
     
-            <section class="text-box">
+            <section class="text-box" aria-describedby="budgeting-desc">
                 <h1>Alerts</h1>
                 <p>
                     What if your clothing budget ended? You will get an alert. The goal is to never go over the budget.
                 </p>
             </section>
     
-            <section class="text-box">
+            <section class="text-box" aria-describedby="budgeting-desc">
                 <h1>Results</h1>
                 <p>
                     People who stick to a financial plan, budgeting every expense, get out of debt faster!
@@ -90,7 +92,7 @@
                 </p>
             </section>
     
-            <section class="text-box">
+            <section class="text-box" aria-describedby="budgeting-desc">
                 <h1>Free</h1>
                 <p>
                     This app is free!!! And you are the only one holding your data!
@@ -101,7 +103,8 @@
 
     </article>
 <!--Semantic HTML Change-->
-    <footer class="bottom">
+<!--A11y Changes-->
+    <footer aria-orientation="horizontal" class="bottom" >
         <div class="center">
             All rights reserved &copy; Fabio Nolasco
         </div>
