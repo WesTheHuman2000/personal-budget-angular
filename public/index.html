@@ -95,7 +95,7 @@
             <section class="text-box" aria-describedby="budgeting-desc">
                 <h1>Free</h1>
                 <p>
-                    This app is free!!! And you are the only one holding your data!
+                    <canvas id="myChart" width="400" height="400"></canvas>
                 </p>
             </section>
 
@@ -109,6 +109,52 @@
             All rights reserved &copy; Fabio Nolasco
         </div>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js" integrity="sha512-aoTNnqZcT8B4AmeCFmiSnDlc4Nj/KPaZyB5G7JnOnUEkdNpCZs1LCankiYi01sLTyWy+m2P+W4XM+BuQ3Q4/Dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js" integrity="sha512-zO8oeHCxetPn1Hd9PdDleg5Tw1bAaP0YmNvPY8CwcRyUk7d7/+nyElmFrB6f7vg4f7Fv4sui1mcep8RIEShczg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        dataSource = {
+            datasets: [{
+                data: [30, 350, 90],
+                backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+    ],
+        }],
+        
+
+    // These labels appear in the legend and in the tooltips when hovering different arcs
+        labels: [
+            'Eat out',
+            'Rent',
+            'Groceries'
+        ]
+        };
+
+        function createChart(){
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var myPieChart = new Chart(ctx, {
+                type:'pie',
+                data: dataSource
+            });
+        };
+
+        function getBudget(){
+            axios.get('/budget')
+            .then(function(res){
+                console.log(res.data);
+                for(var i =0; i<res.data.length; i++){
+                    dataSource.datasets[0].data[i]=res.data.myBudget[i].budget;
+                    dataSource.labels[i] = res.data.myBudget[i].title
+                }
+                createChart();
+            });
+        };
+        getBudget();
+        
+        
+    </script>
 
 </body>
 </html>
