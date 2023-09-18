@@ -330,7 +330,7 @@ function change(data) {
 };
 }
 function getBudgetDataAndInitializeChart() {
-            axios.get('/budget')
+            axios.get('http://localhost:3000/budget')
                 .then(function (res) {
                     console.log(res.data);
                     const budgetData = transformBudgetData(res.data)
