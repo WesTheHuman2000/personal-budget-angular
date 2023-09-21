@@ -1,11 +1,9 @@
-<div class="menu">
+<nav class="menu">
     <ul>
         <!--A11y Change: Aria Label-->
-        <li><a aria-label ='button-Home' href="./">Homepage</a></li>
-        <li><a aria-label ='button-About' href="./about.html">About</a></li>
-        <li><a aria-label ='button-Login' href="./login.html">Login</a></li>
-        <li><a aria-label ='button-Google' href="https://google.com">Google</a></li>
+        <li><a aria-label ='button-Home' [routerLink]="['/']">Homepage</a></li>
+        <li><a aria-label ='button-About' [routerLink]="['/about']">About</a></li>
+        <li><a aria-label ='button-Login' [routerLink]="['/login']">Login</a></li>
+        
     </ul>
-</div>
-
-14:57
+</nav>
