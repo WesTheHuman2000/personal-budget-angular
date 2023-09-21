@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 import { Chart } from 'chart.js';
-import * as d3 from 'd3';
-import * as d3Scale from 'd3-scale'; // For scales
-import * as d3Shape from 'd3-shape'; // For layout functions
+import { DataService } from '../data.service';
 
 
 
@@ -31,10 +29,10 @@ labels: [
 ]
 };
 
-  constructor(private http: HttpClient){}
+  constructor(private dataService: DataService){}
 
   ngOnInit(): void{
-    this.http.get('http://localhost:3000/budget')
+    this.dataService.getBudgetData()
     .subscribe((res: any) =>
     {
 

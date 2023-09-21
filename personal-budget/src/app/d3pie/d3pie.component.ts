@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as d3 from 'd3';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Chart } from 'chart.js';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'pb-d3pie',
@@ -19,7 +18,7 @@ export class D3pieComponent implements OnInit {
   //private data: any[] = [];
   budgetData: any[] = [];
 
-  constructor(private http: HttpClient){}
+  constructor(private dataService: DataService){}
   public dataSource = {
     datasets: [{
         data: [30, 350, 90],
@@ -38,16 +37,12 @@ export class D3pieComponent implements OnInit {
     ]
     };
     data = [
-      {"Framework": "Vue", "Stars": "166443", "Released": "2014"},
-      {"Framework": "React", "Stars": "150793", "Released": "2013"},
-      {"Framework": "Angular", "Stars": "62342", "Released": "2016"},
-      {"Framework": "Backbone", "Stars": "27647", "Released": "2010"},
-      {"Framework": "Ember", "Stars": "21471", "Released": "2011"},
+
     ];
 
   ngOnInit(): void{
 
-    this.http.get('http://localhost:3000/budget')
+    this.dataService.getBudgetData()
     .subscribe((res: any) =>
     {
       this.budgetData = res.budget.myBudget;
