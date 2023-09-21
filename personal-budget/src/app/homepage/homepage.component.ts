@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Chart } from 'chart.js';
 
+
 @Component({
   selector: 'pb-homepage',
   templateUrl: './homepage.component.html',
@@ -30,24 +31,39 @@ labels: [
 
   ngOnInit(): void{
     this.http.get('http://localhost:3000/budget')
-    .subscribe((res: any)
+    .subscribe((res: any) =>
     {
-      const budgetData = res.data.budget.myBudget;
-      for(var i =0; i<budgetData.length; i++){
-                    
+
+      const budgetData = res.budget.myBudget;
+      console.log(budgetData);
+      for(var i =0; i < budgetData.length; i++){
+
         this.dataSource.datasets[0].data[i]=budgetData[i].budget;
-        this.dataSource.labels[i] = budgetData[i].title
+        this.dataSource.labels[i] = budgetData[i].title;
+        this.createChart();
     }
-    this.createChart();
+
+
     });
   }
 
-  createChart(){
-    var ctx = document.getElementById('myChart').getContext('2d');
+  createChart() {
+   // var ctx = document.getElementById('myChart').getContext('2d');
+    var ctx = document.getElementById('myChart') as HTMLCanvasElement;
     var myPieChart = new Chart(ctx, {
         type:'pie',
         data: this.dataSource
     });
 }
+transformBudgetData(res: any) {
+  const budgetData = res.budget.myBudget
+  return budgetData.map((item: { title: string, budget: number }) => ({
+      label: item.title,
+      value: item.budget
+  }));
+}
+
+
+
 };
-'55:00'
+
